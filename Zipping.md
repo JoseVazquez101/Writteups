@@ -2,7 +2,7 @@
 
 Hola, hoy tengo una guia de una maquina de HackTheBox, en las cuales estaremos viendo explotación a partir de subida de archivos y secuestro de librerias para escalada de privilegios. Esta maquina ya la habia resuelto con el metodo del null byte en un archivo zip, pero esto fue parcheado hace unos meses así que mostraré un metodo alterno, por lo que me saltaré la parte de los escaneos
 
-- Plataforma: HackTheBox
+- Plataforma: [HackTheBox](https://app.hackthebox.com/home)
 - Dificultad: Medium
 - OS: Linux
 - IP: 10.10.11.229
@@ -13,27 +13,33 @@ ln -s ../../../../../../etc/hosts document.pdf
 zip --symlinks zip.zip document.pdf
 ~~~
 - Ahora al subirlo vemos que hay conectividad y una respuesta por parte del servidor, por lo que podemos concluir que es vulnerable a LFI, devolviéndome una cadena de texto en base64:
-![[Pasted image 20231103165506.png]]
-![[Pasted image 20231103165521.png]]
-- También podemos comprobarlo bajando el archivo directamente:
-  ![[Pasted image 20231103165714.png]]![[Pasted image 20231103165726.png]]
-  - A este punto me quedé sin ideas, hasta que se me ocurrió bajar algunos de los archivos que nos muestra como trabaja la aplicación por detrás, en cart.php encontré algo interesante:
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/8fdb597e-5693-4c3b-bb56-ef9926e711af)
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/055645c8-d1fe-42f9-a836-5bcdf9d735c4)
 
-![[Pasted image 20231103171141.png]]
+- También podemos comprobarlo bajando el archivo directamente:
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/5cb00c9b-e1cf-4ecc-8f45-942bfefdebce)
+
+- Para este punto me quedé sin ideas, hasta que se me ocurrió bajar algunos de los archivos que nos muestra como trabaja la aplicación por detrás, en cart.php encontré algo interesante, el valor de product_id parece estar intentando bloquear solicitudes con ciertos caracteres, solo aceptando algunos:
+
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/f9e35c5a-6cc5-4143-8f05-51f50614b27d)
+
 - Según HackTricks podemos ofuscar un payload a través de un bit nulo %0A, si tenemos exito deberiamos ver un codigo de redirección 302:
 - Al parecer el servicio de mysql se ejecuta como root, por lo que podremos intentar utilizarlo para que ejecute nuestro payload:
-  ![[Pasted image 20231103171952.png]]
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/8b23d68c-dc25-41f7-8fa6-272d1f8809f9)
   - Y podemos ver que nos responde correctamente, por lo que intentaremos inyectar el payload a través de este metodo:
   - Primero, creamos nuestro payload, encondeando 2 veces en base64:
-![[Pasted image 20231103174330.png]]
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/5c2e9f4d-2ffa-4886-9a36-03d2d0b093ab)
+
 - Después, creamos un archivo en php con la siguiente cadena:
-  ![[Pasted image 20231103174410.png]]
-  - Y encodeamos este payload en base64 para así poder subirlo de la siguiente forma:
-![[Pasted image 20231103174444.png]]
-![[Pasted image 20231103175237.png]]
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/81fa0f62-3e77-46dc-95c3-4a487bc344ca)
+
+- Y encodeamos este payload en base64 para así poder subirlo de la siguiente forma:
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/aa944109-da87-4825-9642-71b3afe8c763)
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/31001874-7fdf-4f8e-b107-d37ae16f9782)
+
+
 - Perfecto, el archivo está subido y lo único que debemos hacer es tener un listener en nuestro puerto 4444 y solicitar en payload con GET:
-![[Pasted image 20231103175302.png]]
-![[Pasted image 20231103175317.png]]
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/d233ffd4-c449-4d62-bf78-93555cd234a4)
 
 
 ***
