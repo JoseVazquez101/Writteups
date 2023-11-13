@@ -1,4 +1,12 @@
 # Analytics
+
+Hola, hoy tengo una guia de una maquina de HackTheBox, en las cuales estaremos viendo enumeración web basica y busqueda de exploits para ciertas versiones de diversas cosas que veremos en la actividad.
+
+- Plataforma: HackTheBox
+- Dificultad: Easy
+- OS: Linux
+- IP: 10.10.11.233
+
 - Comenzamos escaneando el objetivo, los puertos 22 y 80 están expuestos:
 ~~~ bash 
 sudo nmap -p- --open -sS --min-rate 5000 -vvv -n -Pn -sV 10.10.11.233
