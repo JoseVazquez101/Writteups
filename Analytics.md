@@ -2,7 +2,7 @@
 
 Hola, hoy tengo una guia de una maquina de HackTheBox, en las cuales estaremos viendo enumeración web basica y busqueda de exploits para ciertas versiones de diversas cosas que veremos en la actividad.
 
-- Plataforma: HackTheBox
+- Plataforma: [HackTheBox](https://app.hackthebox.com/home)
 - Dificultad: Easy
 - OS: Linux
 - IP: 10.10.11.233
