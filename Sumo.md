@@ -1,7 +1,7 @@
 # Sumo
 
 Hoy vamos a resolver la maquina Sumo, donde estaremos tocando conceptos como explotación y abuso de ShellShock, así como explotación de Kernel en un nivel bastante basico.
-- Plataforma: [VulnHub](https://www.vulnhub.com/)
+- Plataforma/Source: [VulnHub](https://www.vulnhub.com/entry/sumo-1,480/)
 - Dificultad: Beginner
 - Meta: Obtener un shell root, es decir (root@localhost:~#) y luego obtener la bandera en /root
 
