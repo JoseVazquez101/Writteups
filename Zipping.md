@@ -1,4 +1,11 @@
-- Esta maquina ya la habia resuelto con el metodo del null byte en un archivo zip, pero ese metodo fue parcheado hace unos meses así que traté de hacerlo con otro
+# Zipping
+
+Hola, hoy tengo una guia de una maquina de HackTheBox, en las cuales estaremos viendo explotación a partir de subida de archivos y secuestro de librerias para escalada de privilegios. Esta maquina ya la habia resuelto con el metodo del null byte en un archivo zip, pero esto fue parcheado hace unos meses así que mostraré un metodo alterno, por lo que me saltaré la parte de los escaneos
+
+- Plataforma: HackTheBox
+- Dificultad: Medium
+- OS: Linux
+- IP: 10.10.11.229
 
 - Tenemos dos puertos abiertos, el 80 y 22, la pagina web tiene un apartado para subir archivos zip, nosotros crearemos un link simbolico a /etc/hosts de esta forma:
 ~~~ bash 
