@@ -1,4 +1,4 @@
-![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/ad21b20e-1655-4bdc-ab22-396490f4461c)# Analytics
+# Analytics
 - Comenzamos escaneando el objetivo, los puertos 22 y 80 están expuestos:
 ~~~ bash 
 sudo nmap -p- --open -sS --min-rate 5000 -vvv -n -Pn -sV 10.10.11.233
