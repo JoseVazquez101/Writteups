@@ -1,3 +1,4 @@
+#Sumo
 - Iniciamos haciendo ping a la IP para asegurarnos que la maquina esté activa, tuve problemas con herramientas como arp-scan o  netdiscover, así que me cree un [script](https://github.com/JoseVazquez101/My-scr1pt5/blob/main/hostscan.sh) para escanear mi red local:
 - También he decidido añadir una resolución DNS local con el siguiente comando:
   ~~~bash
