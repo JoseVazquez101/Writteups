@@ -2,7 +2,7 @@
 
 Hola, hoy tengo una guia de una maquina de HackTheBox, en las cuales estaremos viendo explotación a partir de subida de archivos y secuestro de librerias para escalada de privilegios. Esta maquina ya la habia resuelto con el metodo del null byte en un archivo zip, pero esto fue parcheado hace unos meses así que mostraré un metodo alterno, por lo que me saltaré la parte de los escaneos
 
-- Plataforma: [HackTheBox](https://app.hackthebox.com/home)
+- Plataforma/Source: [HackTheBox](https://app.hackthebox.com/machines/Zipping)
 - Dificultad: Medium
 - OS: Linux
 - IP: 10.10.11.229
