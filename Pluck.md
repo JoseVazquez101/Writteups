@@ -2,9 +2,9 @@
 
 Hoy vamos a resolver la maquina Pluck, donde estaremos tocando conceptos de explotación a través de LFI, así como escalada de privilegios a través de un script basico en bash.
 
-Plataforma/Source: VulnHub
+Plataforma/Source: [VulnHub](https://www.vulnhub.com/entry/pluck-1,178/)
 
-Dificultad: Beginner
+Dificultad: Easy
 
 Meta: Obtener un shell root, es decir (root@localhost:~#) y luego obtener la bandera en /root
 
