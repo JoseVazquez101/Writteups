@@ -1,5 +1,16 @@
 # Pluck
 
+Hoy vamos a resolver la maquina Pluck, donde estaremos tocando conceptos de explotación a través de LFI, así como escalada de privilegios a través de un script basico en bash.
+
+Plataforma/Source: VulnHub
+
+Dificultad: Beginner
+
+Meta: Obtener un shell root, es decir (root@localhost:~#) y luego obtener la bandera en /root
+
+Iniciamos haciendo ping a la IP para asegurarnos que la maquina esté activa, tuve problemas con herramientas como arp-scan o netdiscover, así que me cree un script para escanear mi red local:
+
+También he decidido añadir una resolución DNS local con el siguiente comando:
 ***
 - Iniciamos haciendo ping a la IP para asegurarnos que la maquina esté activa. Esta maquina ya te muestra la IP al momento de arrancar el sistema, pero igual prefiero utilizar mi  [script](https://github.com/JoseVazquez101/My-scr1pt5/blob/main/hostscan.sh) para escanear mi red local y asegurarme que todo vaya en orden.
 
