@@ -16,7 +16,7 @@ También he decidido añadir una resolución DNS local con el siguiente comando:
 
 - Añadimos una resolución DNS local con el siguiente comando:
   ~~~bash
-  echo '192.168.17.135  sumo.vh' >> /etc/hosts
+  echo '192.168.17.135  pluck.vh' >> /etc/hosts
   ~~~
 - Si todo funciona, llegaría la hora de realizar el escaneo con nmap, con los siguientes parámetros:
 ~~~ bash
