@@ -12,3 +12,4 @@ This repository will contain write ups for machines of various difficulties. Mai
 
   - [Sumo](https://github.com/JoseVazquez101/Writteups/blob/main/Sumo.md)
   - [Pluck](https://github.com/JoseVazquez101/Writteups/blob/main/Pluck.md)
+  - [IMF](https://github.com/JoseVazquez101/Writteups/blob/main/IMF.md)
