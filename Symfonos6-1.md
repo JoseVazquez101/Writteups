@@ -1,8 +1,14 @@
 # Symfonos: 6.1
 
+Hoy vamos a resolver la maquina Symfonos 6.1, donde estaremos tocando conceptos de explotación a través de XXS y una intensa enumeración de ciertos servicios montados en un servidor web.
+
+- Plataforma/Source: [VulnHub](https://www.vulnhub.com/entry/symfonos-61,458/)
+- Dificultad: Medium/Hard
+- Meta: Obtener un shell root, es decir (root@localhost:~#) y luego obtener la bandera en /root
 
 ***
 ***
+
 - Comenzamos con el escaneo de puertos, vemos que tendremos varios objetivos para analizar:
 ~~~ bash 
 ┌──(kali💀Dedsec)-[~/Maquinas/Linux/Symfonos]
