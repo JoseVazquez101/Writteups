@@ -1,6 +1,10 @@
 #Infovore
 
-https://www.vulnhub.com/entry/infovore-1,496/
+Hoy vamos a resolver la maquina Infovore, donde practicaremos conceptos basicos de enumeración web, así como enfasis en el docker Breakout para la escalada de privilegios y acceder a /root.
+
+- Plataforma/Source: [VulnHub](https://www.vulnhub.com/entry/infovore-1,496/)
+- Dificultad: Easy/Medium
+- Meta: Hay 4 banderas, pero solo nos centraremos en obtener /root en el servidor real
 
 ***
 ***
