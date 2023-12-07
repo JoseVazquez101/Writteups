@@ -13,3 +13,4 @@ This repository will contain write ups for machines of various difficulties. Mai
   - [Sumo](https://github.com/JoseVazquez101/Writteups/blob/main/Sumo.md)
   - [Pluck](https://github.com/JoseVazquez101/Writteups/blob/main/Pluck.md)
   - [IMF](https://github.com/JoseVazquez101/Writteups/blob/main/IMF.md)
+  - [Symfonos: 6.1](https://www.vulnhub.com/entry/symfonos-61,458/)
