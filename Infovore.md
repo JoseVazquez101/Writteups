@@ -1,4 +1,4 @@
-#Infovore
+# Infovore
 
 Hoy vamos a resolver la maquina Infovore, donde practicaremos conceptos basicos de enumeración web, así como enfasis en el docker Breakout para la escalada de privilegios y acceder a /root.
 
