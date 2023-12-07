@@ -313,7 +313,7 @@ if __name__=="__main__":
   
 - Solo quedaría ponernos en escucha por el puerto que pongamos en el payload.
 - Y ya ganaríamos acceso, realizamos el ritual para tratar la TTY:
-  ~~~ bash
+~~~ bash
 script /dev/null -c bash
 ^Z
 #Dejamos nuestra sesión en segundo plano
@@ -324,7 +324,7 @@ reset xterm
 export TERM=xterm
 export SHELL=bash
 stty rows 44 columns 184
-  ~~~
+~~~
 
 ***
 <h3>PrivEsc:</h3>
