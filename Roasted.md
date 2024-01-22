@@ -1,4 +1,6 @@
-<h1>Roasted</h1>
+# Roasted
+
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/a50f237e-54c2-4e11-ab09-73f07b20087c)
 
 ***
 - Source: https://tryhackme.com/room/vulnnetroasted
