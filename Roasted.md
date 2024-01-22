@@ -165,10 +165,11 @@ smb: \> dir
 ***
 <h3>ASREPRoasting:</h3>
 - Después de leer las notas podemos identificar algunos roles de usuarios:
-	- `Tony Skid (t-skid):` Security Manager
-	- `Jhonny Leet (j-leet):` Infraestructure Administrator  
-	- `Jack Goldenhand: (j-goldenhand)` Business Team
-	- `Alexa Whitehat (A-whitehat):` Business Manager
+
+ - `Tony Skid (t-skid):` Security Manager
+ - `Jhonny Leet (j-leet):` Infraestructure Administrator  
+ - `Jack Goldenhand: (j-goldenhand)` Business Team
+ - `Alexa Whitehat (A-whitehat):` Business Manager
 
 - Y para optimizar nuestro radio de búsqueda, solo enumeré a estos cuatro  a través de `ASREPRoasting`, para ver si alguno tenía un permiso para recibir un hash de autenticación sin presentar credenciales.
 - Para esto, emplearemos `impacket` con su módulo `GetNPUsers`:
