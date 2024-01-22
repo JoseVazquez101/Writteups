@@ -1,4 +1,4 @@
-Roasted
+<h1>Roasted</h1>
 
 - Realizamos un escaneo de puertos inicial, para saber a que nos estamos enfrentando.
 
@@ -154,8 +154,8 @@ smb: \> dir
 
 8771839 blocks of size 4096. 4551001 blocks available
 ~~~
-
-<h5>ASREPRoasting:</h5>
+***
+<h3>ASREPRoasting:</h3>
 - Después de leer las notas podemos identificar algunos roles de usuarios:
 	- `Tony Skid (t-skid):` Security Manager
 	- `Jhonny Leet (j-leet):` Infraestructure Administrator  
@@ -189,8 +189,8 @@ tj072889*        ($krb5asrep$23$t-skid@vulnnet-rst.local@VULNNET-RST.LOCAL)
 Use the "--show" option to display all of the cracked passwords reliably
 Session completed.
 ~~~
-
-<h5>Kerberoasting:</h5>
+***
+<h3>Kerberoasting:</h3>
 - Con estas credenciales, nos autenticaremos en el dominio para hacer una consulta y buscar algún SPN vinculado a alguna cuenta dentro del AD, para así solicitar a Kerberos un TGS.
 - Para esto, emplearemos ``GetUserSPNs``, aprovechándonos que podemos loguearnos en el dominio con `t-skid`:
 
@@ -239,7 +239,7 @@ vulnnet-rst\enterprise-core-vn
 ~~~
 
 ***
-<h4>PrivEsc:</h4>
+<h2>PrivEsc:</h2>
 - Ahora bien, hubieron algunos recursos que no revisamos en SMB, así que podemos echar un vistazo:
 
 ~~~bash
