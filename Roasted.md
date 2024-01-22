@@ -1,6 +1,6 @@
 # Roasted
 
-![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/a50f237e-54c2-4e11-ab09-73f07b20087c)
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/f319d30a-c3ef-4048-a9a6-a493a7f7bf2d)
 
 ***
 - Source: https://tryhackme.com/room/vulnnetroasted
