@@ -7,6 +7,7 @@ This repository will contain write ups for machines of various difficulties. Mai
   - [Zipping](https://github.com/JoseVazquez101/Writteups/blob/main/Zipping.md)
 
 <h3>TryHackMe</h3>
+
   - [Roasted](https://github.com/JoseVazquez101/Writteups/blob/main/Roasted.md)
   
 <h3>VulnHub</h3>
