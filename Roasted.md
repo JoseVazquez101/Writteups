@@ -1,5 +1,11 @@
 <h1>Roasted</h1>
 
+***
+- Source: https://tryhackme.com/room/vulnnetroasted
+- OS: Windows
+- 
+***
+
 - Realizamos un escaneo de puertos inicial, para saber a que nos estamos enfrentando.
 
 ~~~bash
