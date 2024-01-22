@@ -3,7 +3,9 @@
 ***
 - Source: https://tryhackme.com/room/vulnnetroasted
 - OS: Windows
-- 
+- Dificultad: Easy
+- IP: No estática
+- Temas: Kerberoasting, ASREPRoasting Pass the hash, AD enumeration
 ***
 
 - Realizamos un escaneo de puertos inicial, para saber a que nos estamos enfrentando.
