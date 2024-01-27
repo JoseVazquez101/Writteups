@@ -5,7 +5,7 @@ This repository will contain write ups for machines of various difficulties. Mai
 
   - [Analytics](https://github.com/JoseVazquez101/Writteups/blob/main/Analytics.md)
   - [Zipping](https://github.com/JoseVazquez101/Writteups/blob/main/Zipping.md)
-  - [Hospital]((https://github.com/JoseVazquez101/Writteups/blob/main/Hospital.md)
+  - [Hospital](https://github.com/JoseVazquez101/Writteups/blob/main/Hospital.md)
 
 <h3>TryHackMe</h3>
 
