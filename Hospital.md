@@ -441,4 +441,4 @@ CertUtil: -URLCache command completed successfully.
 
 ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/857f0a3a-c075-4c25-9af9-6d93cf9e4a03)
 
-- Y así concluimos esta máquina, bastante entretenida y muy util para practicar conceptos básicos e intermedios en un entorno dividido.
+- Y así concluimos esta máquina, bastante entretenida y muy util para practicar conceptos básicos e intermedios en un entorno híbrido.
