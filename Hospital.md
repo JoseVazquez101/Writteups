@@ -8,7 +8,7 @@
 - OS: Windows
 - Dificultad: Medium
 - IP: 10.10.11.241
-- Temas: ``File Upload``, ``Code Injection``, `Win Enumeration`, `linux PrivEsc`.
+- Temas: ``File Upload``, ``Code Injection``, `Win Enumeration`, `Linux PrivEsc`.
 ***
 - Comenzamos con un escaneo de puertos, al ser una máquina Windows es probable que veamos bastantes:
 
