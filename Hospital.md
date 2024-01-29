@@ -405,8 +405,6 @@ Info: Establishing connection to remote endpoint
 ┌──(kali💀Dedsec)-[~/Maquinas/Windows/Hospital]
 └─$ rpcclient -U drbrown hospital.htb
 Password for [WORKGROUP\drbrown]:
-rpcclient $> quierydispinfo
-command not found: quierydispinfo
 rpcclient $> querydispinfo
 index: 0x2054 RID: 0x464 acb: 0x00020015 Account: $431000-R1KSAI1DGHMH  Name: (null)    Desc: (null)
 index: 0xeda RID: 0x1f4 acb: 0x00004210 Account: Administrator  Name: Administrator     Desc: Built-in account for administering the computer/domain
