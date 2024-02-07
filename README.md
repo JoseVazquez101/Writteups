@@ -22,5 +22,3 @@ This repository will contain write ups for machines of various difficulties. Mai
   - [Symfonos: 6.1](https://www.vulnhub.com/entry/symfonos-61,458/) ✔️
   - [Infovore](https://www.vulnhub.com/entry/infovore-1,496/) ✔️
 
-<img src="https://i.imgur.com/N0uWaog.png" alt="GIF" width="100px">
-
