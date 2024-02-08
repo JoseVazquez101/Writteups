@@ -19,6 +19,6 @@ This repository will contain write ups for machines of various difficulties. Mai
 
   - [Sumo](https://github.com/JoseVazquez101/Writteups/blob/main/Sumo.md) ✔️
   - [Pluck](https://github.com/JoseVazquez101/Writteups/blob/main/Pluck.md) ✔️
-  - [Symfonos: 6.1](https://www.vulnhub.com/entry/symfonos-61,458/) ✔️
-  - [Infovore](https://www.vulnhub.com/entry/infovore-1,496/) ✔️
+  - [Symfonos: 6.1](https://github.com/JoseVazquez101/Writteups/blob/main/Symfonos6-1.md) ✔️
+  - [Infovore](https://github.com/JoseVazquez101/Writteups/blob/main/Infovore.md) ✔️
 
