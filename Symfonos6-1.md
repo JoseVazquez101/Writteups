@@ -1,6 +1,6 @@
 # Symfonos: 6.1
 
-<img src="https://github.com/JoseVazquez101/Writteups/assets/111292579/38f1b25e-864f-4888-85f9-b2b7fa070f3f" width="100px">
+<img src="https://github.com/JoseVazquez101/Writteups/assets/111292579/38f1b25e-864f-4888-85f9-b2b7fa070f3f">
 
 Hoy vamos a resolver la maquina Symfonos 6.1, donde estaremos tocando conceptos de explotación a través de XXS y una intensa enumeración de ciertos servicios montados en un servidor web.
 
