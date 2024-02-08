@@ -6,6 +6,8 @@ Hoy vamos a resolver la maquina Symfonos 6.1, donde estaremos tocando conceptos 
 
 - Plataforma/Source: [VulnHub](https://www.vulnhub.com/entry/symfonos-61,458/)
 - Dificultad: Medium/Hard
+- OS: Linux
+- IP: Por DHCP
 - Meta: Obtener un shell root, es decir (root@localhost:~#) y luego obtener la bandera en /root
 - Temas: `XSS`, `API enumeration`, `CSRF`, `RCE`, `Linux PrivEsc`
 
