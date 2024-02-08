@@ -8,7 +8,7 @@
 - OS: Linux
 - Dificultad: Medium
 - IP: No estática
-- Temas: 
+- Temas: `ShellSock`, `Kernel Explotation`
 ***
 
 - Realizamos un escaneo de puertos:
