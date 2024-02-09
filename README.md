@@ -15,6 +15,7 @@ This repository will contain write ups for machines of various difficulties. Mai
   - [Roasted](https://github.com/JoseVazquez101/Writteups/blob/main/Roasted.md) ✔️
   - [Jason](https://github.com/JoseVazquez101/Writteups/blob/main/Jason.md) ✔️
   - [0day](https://github.com/JoseVazquez101/Writteups/blob/main/0day.md) ✔️
+  - [The_Great_Escape](https://github.com/JoseVazquez101/Writteups/blob/main/thegreatescape.md) ❌
   
 <h3>VulnHub</h3>
 
