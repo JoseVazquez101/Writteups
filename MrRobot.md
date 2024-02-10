@@ -53,8 +53,8 @@ Nmap done: 1 IP address (1 host up) scanned in 53.50 seconds
 
 ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/61edf809-6e5a-4674-a66c-7852b57cec6c)
 
-- Solo son videos
-- Directorios:
+- Solo son videos, basnatnte interesantes pero no aportan mucho.
+- En ese caso, enumeraremos algunos directorios:
 
 ~~~bash
 ┌──(kali💀Dedsec)-[~/Maquinas/Linux/MrRobot]
@@ -99,8 +99,8 @@ Starting gobuster in directory enumeration mode
 /phpmyadmin/          (Status: 403) [Size: 94]
 ~~~
 
-- Es un WordPress.
-- Tenemos un login:
+- Es un WordPress al parecer.
+- Tenemos un login por lo que alcanzamos a ver:
 
 ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/45d0c884-801e-495f-9aa1-7a5ed0fbac1f)
 
