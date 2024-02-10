@@ -7,5 +7,5 @@
 - OS: Linux
 - Dificultad: Medium
 - IP: No estática
-- Temas: ``RFI``, ``LFI to RCE``, `Linux PrivEsc`, `FTP`.
+- Temas: ``Wordpress``, `CMS`, `Web Enumeration`.
 ***
