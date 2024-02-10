@@ -16,6 +16,7 @@ This repository will contain write ups for machines of various difficulties. Mai
   - [Jason](https://github.com/JoseVazquez101/Writteups/blob/main/Jason.md) ✔️
   - [0day](https://github.com/JoseVazquez101/Writteups/blob/main/0day.md) ✔️
   - [The_Great_Escape](https://github.com/JoseVazquez101/Writteups/blob/main/Thegreatescape.md) ✔️
+  - [Zeno](https://github.com/JoseVazquez101/Writteups/blob/main/Zeno.md) ✔️
   
 <h3>VulnHub</h3>
 
