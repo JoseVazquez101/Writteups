@@ -3,7 +3,7 @@
 ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/a9c92bf3-29f3-4a4f-a54e-f30725ac4882)
 
 ***
- Source: https://tryhackme.com/room/thegreatescape
+- Source: https://tryhackme.com/room/thegreatescape
 - OS: Linux
 - Dificultad: Medium
 - IP: No estática
