@@ -10,6 +10,8 @@ This repository will contain write ups for machines of various difficulties. Mai
   - [Hospital](https://github.com/JoseVazquez101/Writteups/blob/main/Hospital.md) ✔️
   - [Monitored](https://github.com/JoseVazquez101/Writteups/blob/main/Monitored.md) ❌
 
+***
+
 <h3>TryHackMe</h3>
 
   - [Roasted](https://github.com/JoseVazquez101/Writteups/blob/main/Roasted.md) ✔️
@@ -17,6 +19,8 @@ This repository will contain write ups for machines of various difficulties. Mai
   - [0day](https://github.com/JoseVazquez101/Writteups/blob/main/0day.md) ✔️
   - [The_Great_Escape](https://github.com/JoseVazquez101/Writteups/blob/main/Thegreatescape.md) ✔️
   - [Zeno](https://github.com/JoseVazquez101/Writteups/blob/main/Zeno.md) ✔️
+
+***
   
 <h3>VulnHub</h3>
 
