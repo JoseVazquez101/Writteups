@@ -1,6 +1,6 @@
 # Mr. Robot
 
-![[Pasted image 20240210120935.png]]
+![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/9a2be6a9-8fa5-41e0-bf56-aa12c5967979)
 
 ***
 - Source: https://app.hackthebox.com/machines/Hospital
