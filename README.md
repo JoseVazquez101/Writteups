@@ -21,7 +21,7 @@ This repository will contain write ups for machines of various difficulties. Mai
   - [The_Great_Escape](https://github.com/JoseVazquez101/Writteups/blob/main/Thegreatescape.md) ✔️
   - [Zeno](https://github.com/JoseVazquez101/Writteups/blob/main/Zeno.md) ✔️
   - [Mr._Robot](https://github.com/JoseVazquez101/Writteups/blob/main/MrRobot.md) ✔️
-  - [Daily_Bugle](https://github.com/JoseVazquez101/Writteups/blob/main/DailyBugle.md) ❌
+  - [Daily_Bugle](https://github.com/JoseVazquez101/Writteups/blob/main/DailyBugle.md) ✔️
 
 ***
   
