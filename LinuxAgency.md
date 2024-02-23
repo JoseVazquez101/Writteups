@@ -1207,7 +1207,7 @@ robert@ec96850005d6:~$ hostname -I
 - Y aparecemos en un docker... genial...
 
 <center>
-![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/6182b8b4-b005-4525-939b-0843b8589cb9)
+<img src="https://github.com/JoseVazquez101/Writteups/assets/111292579/6182b8b4-b005-4525-939b-0843b8589cb9">
 </center>
 
 ##### User Flag:
