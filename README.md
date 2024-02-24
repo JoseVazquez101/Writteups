@@ -10,6 +10,7 @@ This repository will contain write ups for machines of various difficulties. Mai
   - [Zipping](https://github.com/JoseVazquez101/Writteups/blob/main/Zipping.md) ✔️
   - [Hospital](https://github.com/JoseVazquez101/Writteups/blob/main/Hospital.md) ✔️
   - [Monitored](https://github.com/JoseVazquez101/Writteups/blob/main/Monitored.md) ❌
+  - [Drive](https://github.com/JoseVazquez101/Writteups/blob/main/Drive.md) ✔️
 
 ***
 
