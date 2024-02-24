@@ -467,6 +467,7 @@ tcp         LISTEN       0             4096                             *:3000  
 - Si nos metemos al repositorio existente, podremos ver un archivo bash de backups, en el cual la contraseña está hardcodeada:
 
 ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/7ed6dd92-5bfa-4689-bef0-759130306ac0)
+
     - Passwd: `H@ckThisP@ssW0rDIfY0uC@n:)`
 
 - Ahora podemos desencriptar los backups.
