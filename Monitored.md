@@ -447,4 +447,28 @@ User nagios may run the following commands on localhost:
     (root) NOPASSWD: /usr/local/nagiosxi/scripts/backup_xi.sh *
 ~~~
 
+- Revisé todos los archivos en los que podíamos ejecutar parámetros, no vi nada sospechoso excepto en `/usr/local/nagiosxi/scripts/manage_services.sh`.
+- Aquí, podemos usar como parámetros cualquiera de estas cosas, por lo que podemos detener, iniciar, resetear, o inspeccionar ciertos servicios:
+
+~~~bash
+# Things you can do
+first=("start" "stop" "restart" "status" "reload" "checkconfig" "enable" "disable")
+second=("postgresql" "httpd" "mysqld" "nagios" "ndo2db" "npcd" "snmptt" "ntpd" "crond" "shellinaboxd" "snmptrapd" "php-fpm")
+~~~
+
+- Metí los servicios a un archivo ``txt``, y que más son los servicios sino binarios.
+- Hice una búsqueda recursiva para ver si alguno tenía permisos de escritura, pues si es así, podemos detener el servicio en cuestión, eliminarlo, y crear otro:
+
+~~~bash
+bash-5.1$ while read -r bins; do find /usr/ -writable -name *"$bins"* 2>/dev/null; done < bins2w.txt | grep bin
+/usr/local/nagios/bin/nagios
+/usr/local/nagios/bin/nagiostats
+/usr/local/nagios/bin/npcd.save
+/usr/local/nagios/bin/npcd
+/usr/local/nagios/bin/npcdmod.o
+/usr/local/nagiosxi/html/includes/components/nxti/includes/snmptrap-bins/snmpttconvertmib
+~~~
+
+- Tenemos dos binarios que aparecen, `nagios` y `npcd`.
+
 
