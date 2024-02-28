@@ -470,5 +470,13 @@ bash-5.1$ while read -r bins; do find /usr/ -writable -name *"$bins"* 2>/dev/nul
 ~~~
 
 - Tenemos dos binarios que aparecen, `nagios` y `npcd`.
+- Podemos revisar los permisos de estos, y en efecto podemos escribir sobre estos.
+- Utilizaré el binario de `nagios`.
 
+~~~bash
+bash-5.1$ ls -la /usr/local/nagios/bin/nagios
+-rwxrwxr-- 1 nagios nagios 717648 Nov  9 10:40 /usr/local/nagios/bin/nagios
+bash-5.1$ ls -la /usr/local/nagios/bin/npcd
+-rwxr-xr-x 1 nagios nagios 75 Feb 28 06:35 /usr/local/nagios/bin/npcd
+~~~
 
