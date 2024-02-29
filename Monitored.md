@@ -533,4 +533,4 @@ bash-5.1# cat root.txt
 ~~~
 
 - Esta máquina fue bastante divertida, pone en practica elementos vitales como la enumeración de APIs, de manera retadora y práctica.
-- Creditos a [Hamibubu 🐧](https://github.com/Hamibubu), con quien resolví esta máquina en conjunto :).
+- Creditos a [Hamibubu 🐧](https://github.com/Hamibubu), con quien resolví esta máquina en conjunto xP.
