@@ -12,6 +12,7 @@ This repository will contain write ups for machines of various difficulties. Mai
   - [Monitored](https://github.com/JoseVazquez101/Writteups/blob/main/Monitored.md) ✔️ ---> Collab: [Hamibubu](https://github.com/Hamibubu) 
   - [Drive](https://github.com/JoseVazquez101/Writteups/blob/main/Drive.md) ✔️
   - [Builder](https://app.hackthebox.com/machines/591) ❌ --->  Not Ready
+  - [Perfection](https://github.com/JoseVazquez101/Writteups/blob/main/Perfection.md) ✔️
 
 ***
 
