@@ -35,4 +35,5 @@ This repository will contain write ups for machines of various difficulties. Mai
   - [Pluck](https://github.com/JoseVazquez101/Writteups/blob/main/Pluck.md) ✔️
   - [Symfonos: 6.1](https://github.com/JoseVazquez101/Writteups/blob/main/Symfonos6-1.md) ✔️
   - [Infovore](https://github.com/JoseVazquez101/Writteups/blob/main/Infovore.md) ✔️
+  - [MyExpense](https://github.com/JoseVazquez101/Writteups/blob/main/MyExpense.md) ✔️
 
