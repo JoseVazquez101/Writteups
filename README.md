@@ -26,6 +26,7 @@ This repository will contain write ups for machines of various difficulties. Mai
   - [Mr._Robot](https://github.com/JoseVazquez101/Writteups/blob/main/MrRobot.md) ✔️
   - [Daily_Bugle](https://github.com/JoseVazquez101/Writteups/blob/main/DailyBugle.md) ✔️
   - [Linux_Agency](https://github.com/JoseVazquez101/Writteups/blob/main/LinuxAgency.md) ✔️
+  - [DogCat](https://github.com/JoseVazquez101/Writteups/blob/main/DogCat.md) ✔️
 
 ***
   
