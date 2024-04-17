@@ -11,7 +11,7 @@ This repository will contain write ups for machines of various difficulties. Mai
   - [Hospital](https://github.com/JoseVazquez101/Writteups/blob/main/Hospital.md) ✔️
   - [Monitored](https://github.com/JoseVazquez101/Writteups/blob/main/Monitored.md) ✔️ ---> Collab: [Hamibubu](https://github.com/Hamibubu) 
   - [Drive](https://github.com/JoseVazquez101/Writteups/blob/main/Drive.md) ✔️
-  - [Builder](https://app.hackthebox.com/machines/591) ❌ --->  Not Ready
+  - [Builder](https://github.com/JoseVazquez101/Writteups/blob/main/Builder.md) ✔️
   - [Perfection](https://github.com/JoseVazquez101/Writteups/blob/main/Perfection.md) ✔️
   - [Headless](https://github.com/JoseVazquez101/Writteups/blob/main/Headless.md) ✔️
   - [IClean](https://github.com/JoseVazquez101/Writteups/blob/main/IClean.md) ✔️
