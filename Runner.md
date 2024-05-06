@@ -7,5 +7,5 @@
 - OS: ``Linux``.
 - Dificultad: ``Medium``.
 - IP: ``10.10.11.13``.
-- Temas: `a,` `b`, `c`, `d`, `e`.
+- Temas: `a`, `b`, `c`, `d`, `e`.
 ***
