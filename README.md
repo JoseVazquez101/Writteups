@@ -15,6 +15,7 @@ This repository will contain write ups for machines of various difficulties. Mai
   - [Perfection](https://github.com/JoseVazquez101/Writteups/blob/main/Perfection.md) ✔️
   - [Headless](https://github.com/JoseVazquez101/Writteups/blob/main/Headless.md) ✔️
   - [IClean](https://github.com/JoseVazquez101/Writteups/blob/main/IClean.md) ✔️
+  - [Runner](https://github.com/JoseVazquez101/Writteups/blob/main/Runner.md) ❌
 
 ***
 
