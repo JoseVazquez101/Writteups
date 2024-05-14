@@ -45,6 +45,7 @@ This repository will contain write ups for machines of various difficulties. Mai
 ***
 
 ## Certification training machines:
+***
 
 <h3>eJPTv2 training:</h3>
 
