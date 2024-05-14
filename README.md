@@ -42,11 +42,10 @@ This repository will contain write ups for machines of various difficulties. Mai
   - [MyExpense](https://github.com/JoseVazquez101/Writteups/blob/main/MyExpense.md) ✔️
 
 ***
-
-### Certification training machines:
-
 ***
 
-<h4>eJPTv2 training:</h4>
+## Certification training machines:
+
+<h3>eJPTv2 training:</h3>
 
 
